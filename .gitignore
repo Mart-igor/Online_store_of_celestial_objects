@@ -1,0 +1,19 @@
+# Python cache - исключает кэшированные файлы Python
+__pycache__/
+
+# Pylint configuration - исключает файл конфигурации для Pylint, если используется для анализа кода
+.pylintrc
+
+# Virtual environment - исключает каталоги виртуальных окружений
+venv/
+env/
+
+# IDE settings - исключает настройки для Visual Studio Code и IntelliJ IDEA
+.vscode/
+.idea/
+
+# Media files - исключает загружаемые пользователями медиа-файлы
+media/
+
+# SQLite database - исключает файл базы данных SQLite
+db.sqlite3
