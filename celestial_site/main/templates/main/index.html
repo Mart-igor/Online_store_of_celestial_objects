@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Celestial shop{% endblock title %}
+
+{% block content %}
+<div class="index d-flex flex-column">
+    <div class="index-title flex-column align-items-center">
+        <p>Today it’s worth thinking about the global, think well and choose your place in this galaxy!</p>
+        <p>don't forget to look at the price! gl...</p>
+    </div>
+    <div class="index-recommendations pb-4">
+        <div class="rec-title mb-4">
+            <h3 class="most-pop">Popular Celestial objects</h3>
+        </div>
+    </div>
+    <div class="index-cards d-flex gap-4">
+        {% for celestial_obj in celestial_objs %}
+            {% if celestial_obj.discount %}
+                <a href="{{ celestial_obj.get_absolute_url}}" class="index-card d-flex flex-column align-items-center text-center">
+                    <img src="{{ celestial_obj.image.url }}" class="card-img" alt="">
+                    <h5 class="title-card">{{ celestial_obj.name }}</h5>
+                    <div class="cart-discount d-flex gap-2">
+                        <p class="line">&#8383; {{ celestial_obj.price }}</p>
+                        <p class="price pt-2">&#8383; {{ celestial_obj.cell_price }}</p>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
