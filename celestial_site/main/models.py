@@ -49,7 +49,7 @@ class Category(models.Model):
 class Image(models.Model):
     celestial_obj = models.ForeignKey(Celestial, related_name='images', on_delete=models.PROTECT, null=True)
     image = models.ImageField(upload_to='celestial/%Y/%m/%d', blank=True)
-    
+
     def __str__(self):
         return f'{self.celestial_obj.name} - {self.image.name}'
     
