@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="shortcut icon" href="{% static 'img/ico2.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <header class="header sticky-top">
+        <div class="header-container d-flex">
+            <nav class='header-nav pt-3'>
+                <ul class="header-list d-flex">
+                    <li><a href="{% url 'main:home_page' %}"><img src="{% static 'img/logo.png' %}" class="header-logo-img" alt="logo"></a></li>
+                    <li>
+                        <a href="{% url 'main:home_page' %}" class="nav-a m-3">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main:celestial_list' %}"  class="nav-a m-3">Shop</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-logo">
+                <a href="#"><img src="#" class="bottom-img" alt="--"></a>
+            </div>
+            <div class="header-profile d-flex pt-3">
+                <div class="staff d-flex">
+                    <div class="header-top-phone d-flex">
+                        <i class="fa-solid fa-mobile-screen-button m-1"></i>
+                        <a href="tel:+1234567890" class="tel"><p>+123-456-78-90</p></a>
+                    </div>
+                    <div class="header-top-icons">
+                        <ul class="social-icons d-flex">
+                            <li><a href="#"><i class="fa-brands m-1 fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fa-brands m-1 fa-x-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa-brands m-1 fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <div class="dropdown d-flex">
+                            <button class="btn btn-group-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                en
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">ru</a></li>
+                            </ul>
+                          </div>
+                    </div>
+                </div>               
+                <div class="header-user d-flex">
+                    <a href="#"><img src="{% static 'img/cart_v2.png' %}" class="cart-img" alt="cart"></a>
+                    {% if user.is_authenticated %}
+                        <a href="#">Profile</a>
+                        <p> | </p>
+                        <a href="#">Logout</a>
+                    {% else %}
+                        <a href="#" class="m-2">Login</a>
+                    {% endif %}
+                    
+                </div>     
+            </div>
+        </div>
+    </header>
+    <section class='space'>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </section>
+    <div class="content" style="position: fixed; top: 90px; width: 100%; align-items: center;">
+        {% block content %}{% endblock content %}
+    </div>
+    {% block footer %}{% endblock footer %}
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
