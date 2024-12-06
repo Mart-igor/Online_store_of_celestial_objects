@@ -12,6 +12,7 @@ def detail(request, celestial_slug):
 
 def celestial_list(request, category_slug=None):
     category = None
+    category_slug = category_slug
     celestial_objs = Celestial.objects.filter(available=True)
     categories = Category.objects.all()
     if category_slug:
@@ -19,4 +20,5 @@ def celestial_list(request, category_slug=None):
         celestial_objs = category.celestial.filter(available=True)
     return render(request, 'main/celestial_list.html', context={'celestial_objs': celestial_objs,
                                                                 'category': category,
-                                                                'categories': categories})
+                                                                'categories': categories,
+                                                                'category_slug': category_slug})

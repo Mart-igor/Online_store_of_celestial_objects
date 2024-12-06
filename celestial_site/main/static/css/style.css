@@ -25,6 +25,11 @@ a {
     color: #fff;
 }
 
+h2 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
 h3 {
     font-size: 36px;
 
@@ -181,6 +186,179 @@ fa-solid{
 
 .index-card:hover {
     border: 1px solid #fff;
+}
+
+/* detail.html */
+
+.index {
+    align-items: center;
+}
+
+.index-title {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.index-cards {
+    background: none;
+    width: 1000px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.most-pop {
+    font-size: 48px;
+    line-height: 0;
+}
+
+.index-card {
+    width: 200px;
+    height: 325px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    background-color:transparent;
+}
+
+.index-card:hover {
+    border: 1px solid #fff;
+}
+
+/* detail.html */
+.detail {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.detail-image {
+    width: 650px;
+    height: 650px;
+}
+
+.detail-card {
+    margin-left: 20px;
+}
+
+.description{
+    font-size: 5px;
+}
+
+.image-nav {
+    position: absolute;
+    top: 85%;
+    left: 15.5%;
+    text-align: center;
+}
+
+.prev-btn, .next-btn {
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.detail-p {
+    font-size: 18px;
+}
+
+.card-discount {
+    margin-top: 10px;
+}
+
+.card-discount p {
+    font-size: 24px;
+    padding: 0%;
+    margin: 0;
+}
+
+.line {
+    font-size: 20px;
+    opacity: 0.7;
+    text-decoration: line-through;
+    font-weight: 300;
+    margin-top: -10px;
+    
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: -18px;
+}
+
+/*  */
+
+/* celestial_list.html */
+
+.list {
+    margin-top: -30px;
+    margin-left: 80px;
+}
+
+.sidebar {
+    margin-top: 70px;
+}
+
+.sidebar ul li {
+    font-size: 20px;
+    width: 165px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+.sidebar ul li a {
+    margin-left: 15px;
+    width: 165px;
+}
+
+.sidebar ul {
+    margin-top: 20px;
+}
+
+.cats {
+    list-style: square;
+}
+
+.selected {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.main {
+    margin-left: 150px;
+}
+
+.main-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+    margin-top: 65px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 225px);
+    width: 100%;
+    max-width: 1300px;
+    justify-content: center;
+    justify-items: center;
+    column-gap: 0px;
+    row-gap: 10px;
+    margin: 0 auto;
+}
+
+.card-img {
+    width: 195px;
+    height: 195px;
+}
+
+.title-card {
+    max-width: 185px;
+    margin-top: 20px;
+    min-height: 70px;
 }
 
 /* Styles specific to the space section */

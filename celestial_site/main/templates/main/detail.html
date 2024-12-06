@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}{{ celestial_obj.name }}{% endblock title %}
+
+
+{% block content %}
+    <div class="detail d-flex">
+        <div class="detail-img">
+            {% for image in celestial_obj.images.all %}
+                <img src="{{ image.image.url }}" class="detail-image" style="display: none;" alt="" data-index="{{ forloop.counter0 }}">
+            {% endfor %}
+            <div class="image-nav">
+                <button class="prev-btn">&lsaquo;</button>
+                <button class="next-btn">&rsaquo;</button>
+            </div>
+        </div>
+        <script>
+            const images = document.querySelectorAll('.detail-image');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+
+            images[currentIndex].style.display = 'block';
+
+            if (images.length === 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.addEventListener('click', () => {
+                    images[currentIndex].style.display = 'none';
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    images[currentIndex].style.display = 'block';
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    images[currentIndex].style.display = 'none';
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].style.display = 'block';
+                });
+            }
+        </script>
+        <div class="detail-card">
+            <h2>{{ celestial_obj.name }}</h2>
+            <h3>Category: {{ celestial_obj.category }}</h3>
+            <div class='detail-p'><p>{{ celestial_obj.description|linebreaks }}</p></div>
+            {% if celestial_obj.discount %}
+                <div class="card-discount d-flex gap-3">
+                    <p class="line">&#8383; {{ celestial_obj.price }}</p>
+                    <p class="price">&#8383; {{ celestial_obj.cell_price }}</p>
+                </div>
+            {% else %}
+                <p class="price">&#8383; {{ celestial_obj.price }}</p>
+            {% endif %}
+            
+        </div>
+    </div>
+{% endblock content %}

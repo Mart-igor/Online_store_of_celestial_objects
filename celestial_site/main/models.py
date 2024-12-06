@@ -23,7 +23,7 @@ class Celestial(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse("main:celestial_list", kwargs={"celestial_slug": self.slug})
+        return reverse("main:detail", kwargs={"celestial_slug": self.slug})
     
     def cell_price(self):
         if self.discount:

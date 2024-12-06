@@ -1,0 +1,54 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+
+{% block title %}
+Celestial shop
+{% endblock title %}
+
+{% block content %}
+    <div class="list d-flex">
+        <div class="sidebar">
+            <h3>Categories</h3>
+            <nav class="category_list">
+                <ul class="cats">
+                    <li {% if not category %} class="selected"{% endif %}>
+                        <a href="{% url 'main:celestial_list' %}" class="all_cat_list">All category</a>
+                    </li>
+                    {% for cat in categories %}
+                        <li {% if cat.slug == category_slug %}class="selected"{% endif %}>
+                            <a href="{{ cat.get_absolute_url}}">{{ cat.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="main-title">
+                {% if category %}{{ category.name }}{% else %}Celestial objects{% endif %}
+            </div>
+            <div class="celestial-list">
+                <div class="items">
+                    {% for celestial_obj in celestial_objs %}
+                        <div class="item">
+                            <a href="{{ celestial_obj.get_absolute_url}}" class="index-card d-flex flex-column align-items-center text-center">
+                                <img src="{{ celestial_obj.image.url }}" class="card-img" alt="">
+                                <h5 class="title-card">{{ celestial_obj.name }}</h5>
+                                {% if celestial_obj.discount %}
+                                    <div class="cart-discount d-flex gap-2">
+                                        <p class="line">&#8383; {{ celestial_obj.price }}</p>
+                                        <p class="price pt-2">&#8383; {{ celestial_obj.cell_price }}</p>
+                                    </div>
+                                {% else %}
+                                    <p class="price">$ {{ celestial_obj.price }}</p>
+                                {% endif %}
+                            </a>   
+                        </div>
+                    {% endfor %}         
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+{% endblock content %}
