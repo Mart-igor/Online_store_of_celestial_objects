@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Celestial, Category
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -18,7 +19,11 @@ def celestial_list(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         celestial_objs = category.celestial.filter(available=True)
-    return render(request, 'main/celestial_list.html', context={'celestial_objs': celestial_objs,
+    paginator = Paginator(celestial_objs, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'main/celestial_list.html', context={'celestial_objs': page_obj,
                                                                 'category': category,
                                                                 'categories': categories,
-                                                                'category_slug': category_slug})
+                                                                'category_slug': category_slug,
+                                                                'page_obj': page_obj})

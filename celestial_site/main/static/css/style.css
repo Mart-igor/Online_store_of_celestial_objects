@@ -166,7 +166,6 @@ fa-solid{
 .index-cards {
     background: none;
     width: 1000px;
-    overflow-x: hidden;
     overflow-y: hidden;
 }
 
@@ -339,14 +338,11 @@ fa-solid{
 }
 
 .items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 225px);
+    
     width: 100%;
-    max-width: 1300px;
+    max-width: 1100px;
     justify-content: center;
     justify-items: center;
-    column-gap: 0px;
-    row-gap: 10px;
     margin: 0 auto;
 }
 
@@ -359,6 +355,19 @@ fa-solid{
     max-width: 185px;
     margin-top: 20px;
     min-height: 70px;
+}
+
+.pagination {
+    display: flex;
+    position: absolute;
+    bottom: -20%;
+    left: 46%;
+    gap: 12px;
+    justify-content: center;
+}
+
+.disabled {
+    opacity: 0.2;
 }
 
 /* Styles specific to the space section */

@@ -28,7 +28,7 @@ Celestial shop
                 {% if category %}{{ category.name }}{% else %}Celestial objects{% endif %}
             </div>
             <div class="celestial-list">
-                <div class="items">
+                <div class="items d-flex gap-3">
                     {% for celestial_obj in celestial_objs %}
                         <div class="item">
                             <a href="{{ celestial_obj.get_absolute_url}}" class="index-card d-flex flex-column align-items-center text-center">
@@ -47,8 +47,31 @@ Celestial shop
                     {% endfor %}         
                 </div>
             </div>
-            
-            
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="">
+                    <a href="?page=1">&laquo;</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                </li>
+                {% endif %}
+                {% for page in page_obj.paginator.page_range %}
+                    {% if page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
+                        {% if page == page_obj.number %}
+                            <p class="disabled">{{ page }}</p>
+                        {% else %}
+                            <li>
+                                <a href="?page={{ page }}" class="{% if page_obj.number == page %}disabled{% endif %}">{{ page }}</a>
+                            </li>
+                    {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="">     
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>                         
+                    <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 {% endblock content %}
