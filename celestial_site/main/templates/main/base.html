@@ -52,7 +52,7 @@
                     </div>
                 </div>               
                 <div class="header-user d-flex">
-                    <a href="#"><img src="{% static 'img/cart_v2.png' %}" class="cart-img" alt="cart"></a>
+                    <a href="{% url "cart:cart_detail" %}"><img src="{% static 'img/cart_v2.png' %}" class="cart-img" alt="cart"></a>
                     {% if user.is_authenticated %}
                         <a href="#">Profile</a>
                         <p> | </p>
@@ -60,7 +60,15 @@
                     {% else %}
                         <a href="#" class="m-2">Login</a>
                     {% endif %}
-                    
+                    <p class="cart-quantity">
+                        {% with cart_quantity=cart|length %}
+                            {% if cart_quantity > 0 %}
+                                {{cart_quantity}}
+                            {% else %}
+                            0
+                            {% endif %}
+                        {% endwith %}
+                    </p>
                 </div>     
             </div>
         </div>
