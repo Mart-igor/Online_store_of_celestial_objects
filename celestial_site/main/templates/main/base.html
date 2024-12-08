@@ -63,9 +63,13 @@
                     <p class="cart-quantity">
                         {% with cart_quantity=cart|length %}
                             {% if cart_quantity > 0 %}
+                            <a href="{% url "cart:cart_detail" %}">
                                 {{cart_quantity}}
+                            </a>
                             {% else %}
+                            <a href="{% url "cart:cart_detail" %}">
                             0
+                            </a>
                             {% endif %}
                         {% endwith %}
                     </p>
