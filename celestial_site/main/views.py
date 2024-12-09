@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Celestial, Category
 from django.core.paginator import Paginator
+from cart.forms import CartAddCelestialForm
 
 
 def index(request):
@@ -9,7 +10,9 @@ def index(request):
 
 def detail(request, celestial_slug):
     celestial_obj = get_object_or_404(Celestial, slug=celestial_slug)
-    return render(request, 'main/detail.html', context={'celestial_obj': celestial_obj})
+    cart_celestial_form = CartAddCelestialForm()
+    return render(request, 'main/detail.html', context={'celestial_obj': celestial_obj,
+                                                        'cart_celestial_form': cart_celestial_form})
 
 def celestial_list(request, category_slug=None):
     category = None
