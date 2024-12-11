@@ -89,10 +89,15 @@
         <span></span>
         <span></span>
     </section>
-    <div class="content" style="position: fixed; top: 90px; width: 100%; align-items: center;">
+    <div class="content" style="position: fixed; top: 90px; min-width: 100%; align-items: center;">
         {% block content %}{% endblock content %}
     </div>
-    {% block footer %}{% endblock footer %}
+    
+    <footer class="footer">
+        <p>&commat; enjoy</p>
+    </footer>
+
+
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

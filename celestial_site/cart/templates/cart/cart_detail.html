@@ -4,6 +4,7 @@
 {% block title %}Cart{% endblock title %}
 
 {% block content %}
+<div class="cart-view">
     <section class="cart d-flex">
         <div class="cart-title">
             <h2>Shopping Cart</h2>
@@ -29,16 +30,18 @@
                                     {% if celestial_obj.discount %}
                                         <div class="cart-discount d-flex gap-2">
                                             <p style="font-size:20px;">Price: </p>
-                                            <p class="line">&#8383; {{ celestial_obj.price }}</p>
-                                            <p class="price pt-2">&#8383; {{ celestial_obj.cell_price }}</p>
+                                            <p class="line-cart">&#8383; {{ celestial_obj.price }}</p>
+                                            <p class="price-cart">&#8383; {{ celestial_obj.cell_price }}</p>
                                         </div>
                                     {% else %}
-                                        <p>Price: </p>
-                                        <p class="price mt-2">&#8383; {{ celestial_obj.price }}</p>
+                                        <div class="cart-discount d-flex gap-2">
+                                            <p>Price: </p>
+                                            <p class="price-strong">&#8383; {{ celestial_obj.price }}</p>
+                                        </div>
                                     {% endif %}
                                 </div>
                             </div>
-                            <div style="align-self : flex-end;">
+                            <div style="align-self: flex-end;">
                                 <form action="{% url "cart:cart_remove" celestial_obj.id %}" method="post">
                                     <input type="submit" value="Remove" class="remove-btn">
                                     {% csrf_token %}
@@ -49,11 +52,20 @@
                 {% endwith %}
             {% endfor %}
         </div>
+        
+    </section>
+    <div class="cart-total">
         <div class="total">
-            <h5>Total sum: $ {{ cart.get_total_price }}</h5>
+            <h4>Total sum: $ {{ cart.get_total_price }}</h5>
         </div>
         <div class="cart-buttons d-flex gap-3">
             <a href="#" class="cart-btn">Continue Shopping</a>
+            {% with cart_quantity=cart|length %}
+                {% if cart_quantity > 0 %}
+                    <a href="{% url "orders:create_order" %}" class="cart-btn">Checkout</a>
+                {% endif %}
+            {% endwith %}
         </div>
-    </section>
+    </div>
+</div>
 {% endblock content %}
