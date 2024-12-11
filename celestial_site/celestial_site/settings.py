@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+# stripe listen --forward-to localhost:8000/payment/webhook/
 
 from pathlib import Path
 
@@ -41,7 +42,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'users.apps.UsersConfig',
     'orders.apps.OrdersConfig',
-
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CART_SESSION_ID = 'cart'
 
 AUTH_USER_MODEL = 'users.User'
+
+
+# parametrs for stripe
+
+STRIPE_PUBLISHABLE_KEY = "pk_test_51QFxxcHwPt7itVRBu8it2KiFi3mLnq3A7cFWuHjpCqISGMBUJpbxi0uGabJ197CVeyFk4R47HiznYGOccjrkfRMX00sn9uO38x"
+STRIPE_SECRET_KEY = "sk_test_51QFxxcHwPt7itVRBuLTagqVxvxAxhpcpFU5PXO42tZRSrpmM8lolcp9qF1hRgbhAtP0pYAlJEF7zehHqJnruC7Nv00ILHbURzY"
+STRIPE_API_VERSION = "2024-11-20.acacia"
+
+STRIPE_WEBHOOK_SECRET = "whsec_1bac4ccaca7fe5e6caca4c5607641d7a6aff02ba7f9a8e56d707d0f3e2a56092"

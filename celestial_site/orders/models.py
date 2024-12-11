@@ -1,6 +1,8 @@
 from django.db import models
 from users.models import User
 from main.models import Celestial
+from django.conf import settings
+
 
 
 class Order(models.Model):
@@ -14,6 +16,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+    stripe_id = models.CharField(max_length=250, blank=True)
 
     class Meta:
         ordering = ['-created']
@@ -25,9 +28,18 @@ class Order(models.Model):
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
 
+    def get_stripe_url(self):
+        if not self.stripe_id:
+            return ''
+        if '_test_' in settings.STRIPE_SECRET_KEY:
+            path = '/test/'
+        else:
+            path = '/'
+        return f'https://dashboard.stripe.com{path}paymentts/{self.stripe_id}'
+
 
 class OrderItems(models.Model):
-    order = models.ForeignKey("Order", related_name='items', on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     celestial_obj = models.ForeignKey(Celestial, related_name='order_items', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.PositiveBigIntegerField(default=1)

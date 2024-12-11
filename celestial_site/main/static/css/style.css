@@ -525,6 +525,8 @@ fa-solid{
 }
 
 .cart-btn {
+    background-color: transparent;
+    color: #fff;
     width: 240px;
     font-size: 22px;
     text-align: center;

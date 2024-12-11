@@ -44,22 +44,21 @@
             <h2>{{ celestial_obj.name }}</h2>
             <h3>Category: {{ celestial_obj.category }}</h3>
             <div class='detail-p'><p>{{ celestial_obj.description|linebreaks }}</p></div>
-            {% if celestial_obj.discount %}
-                <div class="card-discount d-flex gap-3">
-                    <p class="line">&#8383; {{ celestial_obj.price }}</p>
-                    <p class="price">&#8383; {{ celestial_obj.cell_price }}</p>
-                </div>
-            {% else %}
-                <p class="price">&#8383; {{ celestial_obj.price }}</p>
-            {% endif %}
-            <form action="{% url "cart:cart_add" celestial_obj.id %}" class="det-form" method="post">
-                <div class="cart-form t-form">
-                    {% csrf_token %}
-                    {{ cart_celestial_form }}
-                    
-                </div>
-                <input type="submit" class="add-to-cart-btn" value="Add to cart">
-            </form>
+                {% if celestial_obj.discount %}
+                    <div class="card-discount d-flex gap-3">
+                        <p class="line">&#8383; {{ celestial_obj.price }}</p>
+                        <p class="price">&#8383; {{ celestial_obj.cell_price }}</p>
+                    </div>
+                {% else %}
+                    <p class="price">&#8383; {{ celestial_obj.price }}</p>
+                {% endif %}
+                <form action="{% url "cart:cart_add" celestial_obj.id %}" class="det-form" method="post">
+                    <div class="cart-form t-form">
+                        {% csrf_token %}
+                        {{ cart_celestial_form }}
+                    </div>
+                    <input type="submit" class="add-to-cart-btn" value="Add to cart">
+                </form>
         </div>
     </div>
 {% endblock content %}
