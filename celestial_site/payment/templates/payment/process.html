@@ -1,0 +1,62 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Payment{% endblock title %}
+
+{% block content %}
+<div class="cart-view">
+    <section class="cart d-flex">
+        <div class="cart-title">
+            <h2>Payment</h2>
+        </div>
+        <div class="cart-cards">
+            {% for item in order.items.all %}
+                {% with celestial_obj=item.celestial_obj %}
+                    <div class="cart-card d-flex">
+                        <div class="cart-card-img">
+                            <img src="{{ celestial_obj.image.url }}" alt="">
+                        </div>
+                        <div style="width: 490px; height: 125px; display: flex; justify-content: space-between;">
+                            <div class="cat-view">
+                                <div class="cart-card-info">
+                                    <div class="cart-card-name ">
+                                        <p>{{ celestial_obj.name }}</p>
+                                    </div>
+                                    <div class="cart-card-q">
+                                        <p style="font-size:18px; padding-left: 20px; margin-top: 5px;">Quantity: {{ item.quantity }}</p>
+                                    </div>
+                                </div>
+                                <div class="cart-card-price">
+                                    {% if celestial_obj.discount %}
+                                        <div class="cart-discount d-flex gap-2">
+                                            <p style="font-size:20px;">Price: </p>
+                                            <p class="line-cart">&#8383; {{ celestial_obj.price }}</p>
+                                            <p class="price-cart">&#8383; {{ celestial_obj.cell_price }}</p>
+                                        </div>
+                                    {% else %}
+                                        <div class="cart-discount d-flex gap-2">
+                                            <p>Price: </p>
+                                            <p class="price-strong">&#8383; {{ celestial_obj.price }}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div style="align-self: flex-end;">
+                                <form action="{% url "cart:cart_remove" celestial_obj.id %}" method="post">
+                                    <input type="submit" value="Remove" class="remove-btn">
+                                    {% csrf_token %}
+                                </form>
+                            </div>
+                        </div>   
+                    </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+        <form action="{% url "payment:process" %}" method="post" class="payform">
+            {% csrf_token %}
+            <input type="submit" value="Pay now" class="login-btn form-style">
+        </form>
+    </section>
+    
+</div>
+{% endblock content %}
