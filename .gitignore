@@ -12,8 +12,5 @@ env/
 .vscode/
 .idea/
 
-# Media files - исключает загружаемые пользователями медиа-файлы
-media/
-
 # SQLite database - исключает файл базы данных SQLite
 db.sqlite3
