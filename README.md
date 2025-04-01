@@ -1,12 +1,12 @@
 What celestial object are you looking for?
 =
-[![GitHub Stars](https://img.shields.io/github/stars/Mart-igor/GUI_for_identifying_stationary_mode.svg)](https://github.com/Mart-igor/GUI_for_identifying_stationary_mode/stargazers)
-[![GitHub release (latest by semver)](https://img.shields.io/github/v/release/Mart-igor/GUI_for_identifying_stationary_mode?color=60be86&label=Latest%20release&style=social&sort=semver)](https://github.com/Mart-igor/GUI_for_identifying_stationary_mode/releases)
-[![Watchers](https://img.shields.io/github/watchers/Mart-igor/GUI_for_identifying_stationary_mode?style=social)](https://github.com/Mart-igor/GUI_for_identifying_stationary_mode/watchers)
+[![GitHub Stars](https://img.shields.io/github/stars/Mart-igor/Online_store_of_celestial_objects.svg)](https://github.com/Mart-igor/Online_store_of_celestial_objects/stargazers)
+[![GitHub release (latest by semver)](https://img.shields.io/github/v/release/Mart-igor/Online_store_of_celestial_objects?color=60be86&label=Latest%20release&style=social&sort=semver)](https://github.com/Mart-igor/Online_store_of_celestial_objects/releases)
+[![Watchers](https://img.shields.io/github/watchers/Mart-igor/Online_store_of_celestial_objects?style=social)](https://github.com/Mart-igor/Online_store_of_celestial_objects/watchers)
  
 Come in and choose your favorite while the discounts are on  
 *(anyway make sure you have enough money... ;)*
-![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/7ca5f89cbd6c3c3ac835544437d8f915ffd5fcbb/screenshots/Clipchamp6-ezgif.com-resize.gif)
+![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/Clipchamp6-ezgif.com-resize.gif)
 
 ***
 ***
@@ -30,7 +30,6 @@ The following features have been implemented:
    - *to make the templates look beautiful I used:*  
 -- **bootstrap**  
 -- **css**  
--- **cdnjs**
 1. To populate the ***database*** I used:  
 -- **ORM**  
 -- **admin-panel**  
@@ -38,8 +37,7 @@ The following features have been implemented:
 1. In order to be able to roll back in case of a fatal error (actually mostly as an artificial ***team experience***), I used:  
 -- **Git & GitHub**
 1. To keep it in Internet I use two ways:
-   - use web-server
-   - use Linux server and nginx
+   - use Linux server and nginx 
 
 ---
 ## Table of content
@@ -59,7 +57,6 @@ The following features have been implemented:
   - [Development Workflow](#development-workflow)
     - [📝 Planning with Jira](#-planning-with-jira)
       - [Screenshots:](#screenshots)
-      - [Why Jira?](#why-jira)
   - [Deployment](#deployment)
   - [Feedback](#feedback)
 
@@ -138,21 +135,67 @@ I began by breaking down the project into structured milestones using **Jira**, 
 
 #### Screenshots:  
 - **Project Plan**:  
-  ![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/7ca5f89cbd6c3c3ac835544437d8f915ffd5fcbb/screenshots/plan.png) 
+  ![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/plan.png) 
 - **Workflow Visualization**:  
-  ![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/7ca5f89cbd6c3c3ac835544437d8f915ffd5fcbb/screenshots/work_flow.png)  
-
-#### Why Jira?  
-- **Agile Management**: Enabled iterative development with sprints.  
-- **Transparency**: Clear task ownership and deadlines.  
+  ![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/work_flow.png)  
 
 
-## Deployment
 
-If you want deploy this project you should use Linux to make a sever 
-Here's two ways to do it: 
-1. Your main oparating system is Linux
-2. Use VirtualBox
+## Deployment  
+
+1. Клонирование репозитория  
+```bash  
+git clone https://github.com/Mart-igor/Online_store_of_celestial_objects.git  
+cd celestial_site  
+```  
+
+2. Настройка виртуального окружения  
+
+**Для Linux/MacOS:**  
+```bash  
+python -m venv venv  
+source venv/bin/activate  
+```  
+
+**Для Windows:**  
+```bash  
+python -m venv venv  
+venv\Scripts\activate  
+```  
+
+3. Установка зависимостей  
+```bash  
+pip install -r requirements.txt  
+```  
+
+4. Восстановление базы данных  
+Дамп БД доступен в репозитории:  
+https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/db
+
+Импортируйте дамп БД (предварительно создав БД `your_db_name`):  
+```bash  
+pg_restore -d your_db_name celestial_site.dump  
+```  
+
+5. Настройка Stripe  
+Создайте файл `.env` и добавьте ключи:  
+```env  
+STRIPE_PUBLIC_KEY='ваш_публичный_ключ'  
+STRIPE_SECRET_KEY='ваш_секретный_ключ'  
+```  
+
+## 🌍 Публичный деплой (для доступа в интернете)
+
+### Необходимые подготовительные шаги:
+1. **Приобретение доменного имени**
+2. **Аренда сервера**
+3. **Подключение к серверу (спользуйте Termius или аналогичный SSH-клиент)**
+4. **Используются заранее подготовленные конфигурации для контейнеров**
+- [Dockerfile](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/Dockerfile)
+- [docker-compose.yml](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/docker-compose.yml)
+- [nginx.conf](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/nginx.conf)
+5. **Инструкция по настройке сервера**
+- [инструкция](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/deploy_guid.txt)
 
 
 ## Feedback

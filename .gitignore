@@ -6,7 +6,6 @@ __pycache__/
 
 # Virtual environment - исключает каталоги виртуальных окружений
 venv/
-env/
 
 # IDE settings - исключает настройки для Visual Studio Code и IntelliJ IDEA
 .vscode/

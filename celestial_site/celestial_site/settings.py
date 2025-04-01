@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 # stripe listen --forward-to localhost:8000/payment/webhook/
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,8 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6upg0%e@2^%@xmogcheswxnj-axa*dxso7ajpkb%0(qb62wzc2'
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -80,14 +83,25 @@ WSGI_APPLICATION = 'celestial_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'celestial_site',
+#         'USER': 'celestial_site',
+#         'PASSWORD': 'celestial_site',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'celestial_site',
-        'USER': 'celestial_site',
-        'PASSWORD': 'celestial_site',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('POSTGRES_NAME', 'celestial_site'),
+        'USER': os.getenv('POSTGRES_USER', 'celestial_site'),
+        'PASSWORD': os.getenv('POSTGRES_HOST'),
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+        'PORT': os.getenv('POSTGRES_PORT', 5432),
+        'ATOMIC_REQUESTS':True,
     }
 }
 
@@ -128,14 +142,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = 'media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 CART_SESSION_ID = 'cart'
 
@@ -144,8 +161,18 @@ AUTH_USER_MODEL = 'users.User'
 
 # parametrs for stripe
 
-STRIPE_PUBLISHABLE_KEY = "pk_test_51QFxxcHwPt7itVRBu8it2KiFi3mLnq3A7cFWuHjpCqISGMBUJpbxi0uGabJ197CVeyFk4R47HiznYGOccjrkfRMX00sn9uO38x"
-STRIPE_SECRET_KEY = "sk_test_51QFxxcHwPt7itVRBuLTagqVxvxAxhpcpFU5PXO42tZRSrpmM8lolcp9qF1hRgbhAtP0pYAlJEF7zehHqJnruC7Nv00ILHbURzY"
+# STRIPE_PUBLISHABLE_KEY = "pk_test_51QFxxcHwPt7itVRBu8it2KiFi3mLnq3A7cFWuHjpCqISGMBUJpbxi0uGabJ197CVeyFk4R47HiznYGOccjrkfRMX00sn9uO38x"
+# STRIPE_SECRET_KEY = "sk_test_51QFxxcHwPt7itVRBuLTagqVxvxAxhpcpFU5PXO42tZRSrpmM8lolcp9qF1hRgbhAtP0pYAlJEF7zehHqJnruC7Nv00ILHbURzY"
+
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+
+
 STRIPE_API_VERSION = "2024-11-20.acacia"
 
 STRIPE_WEBHOOK_SECRET = "whsec_1bac4ccaca7fe5e6caca4c5607641d7a6aff02ba7f9a8e56d707d0f3e2a56092"
+
+# SECURE_PROXY_SSL_HEADER = ('HHTP_X_FORWARDED_PROTO', 'https')
+# SECRET_SSL_REDIRECT =True
+# SESION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
