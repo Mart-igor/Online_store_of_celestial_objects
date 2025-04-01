@@ -14,13 +14,14 @@ def login(request):
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(request, username=cd['username'], password=cd['password'])
-            if user and user.is_active:
+            if user:
                 auth.login(request, user)
                 return HttpResponseRedirect(reverse('main:celestial_list')) 
+        
  
     else:
         form = UserLoginForm()
-        return render(request, 'users/login.html', context={'form': form})
+    return render(request, 'users/login.html', context={'form': form})
 
 
 def logout(request):
