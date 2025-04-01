@@ -1,14 +1,12 @@
 What celestial object are you looking for?
 =
-[![GitHub Stars](https://img.shields.io/github/stars/IgorAntun/node-chat.svg)](https://github.com/IgorAntun/node-chat/stargazers)
-[![GitHub Issues](https://img.shields.io/github/issues/IgorAntun/node-chat.svg)](https://github.com/IgorAntun/node-chat/issues) [![Current Version](https://img.shields.io/badge/version-1.0.1-green.svg)](https://github.com/IgorAntun/node-chat) 
-[![GitHub commits](https://img.shields.io/github/commits-since/aregtech/areg-sdk/v1.5.0.svg?style=social)](https://GitHub.com/aregtech/areg-sdk/commit/)
-[![Fork](https://img.shields.io/github/forks/aregtech/areg-sdk?style=social)](https://github.com/aregtech/areg-sdk/network/members)
-[![Watchers](https://img.shields.io/github/watchers/aregtech/areg-sdk?style=social)](https://github.com/aregtech/areg-sdk/watchers)
+[![GitHub Stars](https://img.shields.io/github/stars/Mart-igor/GUI_for_identifying_stationary_mode.svg)](https://github.com/Mart-igor/GUI_for_identifying_stationary_mode/stargazers)
+[![GitHub release (latest by semver)](https://img.shields.io/github/v/release/Mart-igor/GUI_for_identifying_stationary_mode?color=60be86&label=Latest%20release&style=social&sort=semver)](https://github.com/Mart-igor/GUI_for_identifying_stationary_mode/releases)
+[![Watchers](https://img.shields.io/github/watchers/Mart-igor/GUI_for_identifying_stationary_mode?style=social)](https://github.com/Mart-igor/GUI_for_identifying_stationary_mode/watchers)
  
 Come in and choose your favorite while the discounts are on  
 *(anyway make sure you have enough money... ;)*
-![Chat Preview](http://i.imgur.com/lgRe8z4.png)
+![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/7ca5f89cbd6c3c3ac835544437d8f915ffd5fcbb/screenshots/Clipchamp6-ezgif.com-resize.gif)
 
 ***
 ***
@@ -17,38 +15,57 @@ Come in and choose your favorite while the discounts are on
 
 To demonstrate my skills and abilities, I created a website.  
 The following features have been implemented:  
+
+0. I orginiezed a menagment of this project by myself
+     - **Jira** - *organizer and manage your task from staging to deployment*
 1. The site consists of several ***apps*** that do their job  
 -- **main** - *display of celestial objects (taking into account their categories)*  
 -- **cart** - *display of shopping list*  
 -- **users** - *interaction with users (login, logout, registration)*  
 -- **orders** - *create order*  
 -- **payment** - *payment for goods*
-2. When creating ***templates*** I used:  
+1. When creating ***templates*** I used:  
 -- **html5**  
 -- **jinja**  
    - *to make the templates look beautiful I used:*  
 -- **bootstrap**  
 -- **css**  
 -- **cdnjs**
-3. To populate the ***database*** I used:  
+1. To populate the ***database*** I used:  
 -- **ORM**  
 -- **admin-panel**  
 -- **PostgreSQL**
-4. In order to be able to roll back in case of a fatal error (actually mostly as an artificial ***team experience***), I used:  
+1. In order to be able to roll back in case of a fatal error (actually mostly as an artificial ***team experience***), I used:  
 -- **Git & GitHub**
-5. To keep it in Internet I use two ways:
+1. To keep it in Internet I use two ways:
    - use web-server
    - use Linux server and nginx
 
 ---
 ## Table of content
- - [Tech Stack](#tech-stack)
- - [Demo](#demo)
- - [Documentation](#documentation)
- - [Deployment](#deployment)
- - [Feedback](#feedback)
+- [What celestial object are you looking for?](#what-celestial-object-are-you-looking-for)
+  - [Introduction](#introduction)
+  - [Table of content](#table-of-content)
+  - [Tech Stack](#tech-stack)
+  - [Demo](#demo)
+    - [📌 Home Page](#-home-page)
+    - [🗂 Categories Page](#-categories-page)
+    - [🪐 Product Page](#-product-page)
+    - [🔐 Login Page](#-login-page)
+    - [🛒 Shopping Cart](#-shopping-cart)
+    - [📦 Order Page](#-order-page)
+    - [✅ Review Your Order](#-review-your-order)
+    - [💳 Payment Page (Stripe)](#-payment-page-stripe)
+  - [Development Workflow](#development-workflow)
+    - [📝 Planning with Jira](#-planning-with-jira)
+      - [Screenshots:](#screenshots)
+      - [Why Jira?](#why-jira)
+  - [Deployment](#deployment)
+  - [Feedback](#feedback)
 
 ## Tech Stack
+
+**Management** Jira
 
 **Client:** Django, PosgreSQL, Docker
 
@@ -56,21 +73,79 @@ The following features have been implemented:
 
 ## Demo
 
-home page - here's shows the most popular (salles) goods
-there'is head up which give you some actions like log in liks to socials 
-![Chat Preview](http://i.imgur.com/lgRe8z4.png)
-log in
-![Chat Preview](http://i.imgur.com/lgRe8z4.png)
-cart
-![Chat Preview](http://i.imgur.com/lgRe8z4.png)
-payment
-![Chat Preview](http://i.imgur.com/lgRe8z4.png)
+The Celestial Objects Online Store offers a user-friendly interface for purchasing stars, planets, and other cosmic bodies. Below is an overview of the key pages on the website.
 
-## Documentation
+### 📌 Home Page  
+- **Description**: Displays the most popular items (by sales volume).  
+- **Features**:  
+  - The header includes navigation elements: login/signup buttons, links to social media, and the shopping cart.  
+  - A slider or product grid highlighting "best sellers."  
+- **Screenshot**:  
+  ![Home Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/home_gif.gif)  
 
-Here I will relate you how i create a web-shop and give some liks to usfull stuff
+### 🗂 Categories Page  
+- **Description**: Users can browse products by category (e.g., "Stars," "Planets," "Galaxies").  
+- **Features**:  
+  - Responsive product grid with brief descriptions.  
+- **Screenshot**:  
+  ![Categories Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/categories_gif.gif)  
 
-I starte with create an 
+### 🪐 Product Page  
+- **Description**: Detailed information about a selected celestial object.  
+- **Features**:  
+  - Images, price, description, and specifications (mass, diameter, distance from Earth).  
+  - "Add to Cart".  
+- **Screenshot**:  
+  ![Product Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/product_gif.gif)  
+
+### 🔐 Login Page  
+- **Description**: Authentication or registration form.  
+- **Features**:  
+  - Email/password fields.  
+  - Links for password recovery and signup.  
+- **Screenshot**:  
+  ![Login Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/login_gif.gif)  
+
+### 🛒 Shopping Cart  
+- **Description**: Review selected items before checkout.  
+- **Features**:  
+  - Remove items.  
+  - Total cost and a "Proceed to Payment" button or "Continue shopping".  
+- **Screenshot**:  
+  ![Cart Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/cart_gif.gif)  
+
+### 📦 Order Page  
+- **Description**: Enter delivery details.  
+- **Screenshot**:  
+  ![Order Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/order_gif.gif)  
+
+  ### ✅ Review Your Order  
+- **Description**: EReview your order and confirm the order.  
+- **Screenshot**:  
+  ![Order Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/payment_gif.gif) 
+
+### 💳 Payment Page (Stripe) 
+- **Description**: Integrated payment system (e.g., Stripe).  
+- **Note**: Use test card details for demo transactions:  
+  `4242 4242 4242 4242` (Expiry: `12/34`, CVC: `123`).  
+- **Screenshot**:  
+  ![Payment Page](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/main/screenshots/strip_gif.gif)
+
+## Development Workflow  
+
+### 📝 Planning with Jira  
+I began by breaking down the project into structured milestones using **Jira**, which helped organize tasks and track progress efficiently.    
+
+#### Screenshots:  
+- **Project Plan**:  
+  ![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/7ca5f89cbd6c3c3ac835544437d8f915ffd5fcbb/screenshots/plan.png) 
+- **Workflow Visualization**:  
+  ![Chat Preview](https://github.com/Mart-igor/Online_store_of_celestial_objects/blob/7ca5f89cbd6c3c3ac835544437d8f915ffd5fcbb/screenshots/work_flow.png)  
+
+#### Why Jira?  
+- **Agile Management**: Enabled iterative development with sprints.  
+- **Transparency**: Clear task ownership and deadlines.  
+
 
 ## Deployment
 
@@ -83,12 +158,3 @@ Here's two ways to do it:
 ## Feedback
 
 Feel free to send us feedback on Twitter or file an issue. Feature requests are always welcome. If you wish to contribute, please take a quick look at the guidelines!
-
-## Show your support
-
-Please ⭐️ this repository if you find this project usefull!
-
-And you can support this project here --> 
-<a href="https://www.patreon.com/FranckAbgrall">
-  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>

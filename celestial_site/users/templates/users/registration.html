@@ -8,7 +8,7 @@
         <section class="login-reg d-flex">
             <div class="login-title">
                 <h2>Registration</h2>
-                <form action="{% url "user:registration" %}" method="post">
+                <form action="{% url "users:registration" %}" method="post">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 mb-3">

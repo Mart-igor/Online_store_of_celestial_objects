@@ -13,8 +13,8 @@
 <body>
     <header class="header sticky-top">
         <div class="header-container d-flex">
-            <nav class='header-nav pt-3'>
-                <ul class="header-list d-flex">
+            <nav class='header-nav pt-2'>
+                <ul class="header-list d-flex pt-3">
                     <li><a href="{% url 'main:home_page' %}"><img src="{% static 'img/logo.png' %}" class="header-logo-img" alt="logo"></a></li>
                     <li>
                         <a href="{% url 'main:home_page' %}" class="nav-a m-3">Home</a>
@@ -24,9 +24,6 @@
                     </li>
                 </ul>
             </nav>
-            <div class="header-logo">
-                <a href="#"><img src="#" class="bottom-img" alt="--"></a>
-            </div>
             <div class="header-profile d-flex pt-3">
                 <div class="staff d-flex">
                     <div class="header-top-phone d-flex">
@@ -51,7 +48,7 @@
                           </div>
                     </div>
                 </div>               
-                <div class="header-user d-flex">
+                <div class="header-user d-flex pb-3">
                     <a href="{% url "cart:cart_detail" %}"><img src="{% static 'img/cart_v2.png' %}" class="cart-img" alt="cart"></a>
                     {% if user.is_authenticated %}
                         <a href="{% url "users:profile" %}">Profile</a>

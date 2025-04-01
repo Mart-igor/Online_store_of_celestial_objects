@@ -14,6 +14,7 @@ class OrderForm(forms.ModelForm):
             self.initial['first_name'] = self.request.user.first_name
             self.initial['last_name'] = self.request.user.last_name
             self.initial['email'] = self.request.user.email
+            
 
     def save(self, commit=False):
         order = super().save(commit=False)

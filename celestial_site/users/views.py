@@ -33,12 +33,11 @@ def registration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
+            form.save()
             user = form.instance
-            login(request, user)
+            auth.login(request, user)
             messages.success(request, f'{user.username}, Successful Registration')
-            return HttpResponseRedirect(reverse('user:login'))
+            return HttpResponseRedirect(reverse('users:login'))
     else:
         form = UserRegistrationForm()
     return render(request, 'users/registration.html')
@@ -51,7 +50,7 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile was changed')
-            return HttpResponseRedirect(reverse('user:profile'))
+            return HttpResponseRedirect(reverse('users:profile'))
     else:
         form = UserProfileForm(instance=request.user)
     return render(request, 'users/profile.html', {'form': form})
